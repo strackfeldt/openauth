@@ -1,5 +1,11 @@
 # @openauthjs/openauth
 
+## 0.2.5
+
+### Patch Changes
+
+- 873d1af: support specifying granular ttl for access/refresh token
+
 ## 0.2.4
 
 ### Patch Changes
