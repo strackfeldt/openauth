@@ -210,20 +210,20 @@ export function createClient(input: {
         },
       }
     },
-    async invalidate(
+    async revoke(
       refresh: string,
       opts?: {
         all?: boolean
       },
     ): Promise<{ err: false } | { err: InvalidRefreshTokenError }> {
-      const tokens = await f(issuer + "/invalidate", {
+      const tokens = await f(issuer + "/revoke", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams({
-          refresh_token: refresh,
-          invalidate_all: opts?.all ? "true" : "false",
+          token: refresh,
+          revoke_all: opts?.all ? "true" : "false",
         }).toString(),
       })
       if (!tokens.ok) {

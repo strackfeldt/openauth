@@ -562,7 +562,7 @@ export function authorizer<
   )
 
   app.post(
-    "/invalidate",
+    "/revoke",
     cors({
       origin: "*",
       allowHeaders: ["*"],
@@ -572,7 +572,7 @@ export function authorizer<
     async (c) => {
       const form = await c.req.formData()
 
-      const refreshToken = form.get("refresh_token")
+      const refreshToken = form.get("token")
       if (!refreshToken)
         return c.json(
           {
@@ -605,7 +605,7 @@ export function authorizer<
       }
       await Storage.remove(storage, key)
 
-      const all = form.get("invalidate_all") === "true"
+      const all = form.get("revoke_all") === "true"
       if (all) {
         for await (const [key] of Storage.scan(storage, [
           "oauth:refresh",
