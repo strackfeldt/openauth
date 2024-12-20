@@ -1,5 +1,11 @@
 # @openauthjs/openauth
 
+## 0.2.6
+
+### Patch Changes
+
+- e0c36b2: feat: add token invalidation
+
 ## 0.2.5
 
 ### Patch Changes
